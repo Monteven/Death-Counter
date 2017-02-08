@@ -1,0 +1,16 @@
+name: DeathCounter
+main: io.github.monteven.deathcounter.DeathCounter
+version: 1.2.0
+author: Monteven
+commands:
+  deaths:
+      description: Provides the user with their total amount of deaths, including a seperate counter for kills by players - can optionally check for other players.
+      usage: /deaths [player]
+      permission: deathcounter.deaths
+      permission-message: You do not have the permission deathcounter.deaths.
+  deathshelp:
+      description: Provides the user with help about Death Counter.
+      usage: /deathshelp
+      permission: deathcounter.help
+      permission-message: You do not have the permission deathcounter.deathshelp.
+      
