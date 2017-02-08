@@ -19,7 +19,7 @@ public class CommandDeaths implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("deaths") && sender instanceof Player && sender.hasPermission("deathcounter.deaths")) {
 			
-			if(args.length < 1) {
+			if (args.length < 1) {
 				Player player = (Player) sender;
 				String pUUID = player.getUniqueId().toString();
 				String pkUUID = player.getUniqueId().toString();
@@ -28,9 +28,9 @@ public class CommandDeaths implements CommandExecutor {
 				player.sendMessage(color("&3You&7 have a total of &3" + pdeaths + " deaths&7,&3 " + pkdeaths + " &7of which are from &cenemy players&7."));
 				return true;
 			
-			}else if(args.length == 1) {
+			} else if (args.length == 1) {
 				Player player = (Bukkit.getServer().getPlayer(args[0]));
-				if(player == null) {
+				if (player == null) {
 					sender.sendMessage(color("&3" + args[0] + " &7is not online!"));
 					return true;
 				
@@ -43,7 +43,7 @@ public class CommandDeaths implements CommandExecutor {
 					return true;
 				}
 			}
-		} else if(cmd.getName().equalsIgnoreCase("deathshelp") && sender instanceof Player && sender.hasPermission("deathcounter.help")) {
+		} else if (cmd.getName().equalsIgnoreCase("deathshelp") && sender instanceof Player && sender.hasPermission("deathcounter.help")) {
 			Player player = (Player) sender;
 			player.sendMessage(color("&3Commands:\n/deaths &7- provides you with your total amount of deaths\n&3/deathshelp &7- provides you with help about Death Counter"));
 			return true;

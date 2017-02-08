@@ -27,17 +27,17 @@ public final class DeathCounter extends JavaPlugin implements Listener {
 	
 	private void createConfig() {
 	    try {
-	        if(!getDataFolder().exists()) {
+	        if (!getDataFolder().exists()) {
 	            getDataFolder().mkdirs();
 	        }
 	        File file = new File(getDataFolder(), "config.yml");
-	        if(!file.exists()) {
+	        if (!file.exists()) {
 	            getLogger().info("Config.yml not found, creating!");
 	            saveDefaultConfig();
-	        }else{
+	        } else {
 	            getLogger().info("Config.yml found, loading!");
 	        }
-	    } catch(Exception e) {
+	    } catch (Exception e) {
 	        e.printStackTrace();
 
 	    }
@@ -48,7 +48,7 @@ public final class DeathCounter extends JavaPlugin implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		String uuid = player.getUniqueId().toString();
-		if(!getConfig().contains("Players." + uuid)) {
+		if (!getConfig().contains("Players." + uuid)) {
 			getConfig().set("Players." + uuid + ".Deaths", 0);
 			getConfig().set("Players." + uuid + ".DeathsByPlayer", 0);
 			saveConfig();
@@ -59,13 +59,13 @@ public final class DeathCounter extends JavaPlugin implements Listener {
 		Player player = event.getEntity();
 		String uuid = player.getUniqueId().toString();
 		int deaths = getConfig().getInt("Players." + uuid + ".Deaths");
-		if(player.getKiller() instanceof Player) {
+		if (player.getKiller() instanceof Player) {
 			int pkdeaths = getConfig().getInt("Players." + uuid + ".DeathsByPlayer");
 			getConfig().set("Players." + uuid + ".Deaths", deaths +1);
 			getConfig().set("Players." + uuid + ".DeathsByPlayer", pkdeaths +1);
 			saveConfig();
 			player.sendMessage(color("&cYou have died! Your total death count is now " + deaths+1 + "."));
-		}else{
+		} else {
 			getConfig().set("Players." + uuid + ".Deaths", deaths +1);
 			saveConfig();
 			player.sendMessage(color("&cYou have died! Your total death count is now " + deaths+1 + "."));
